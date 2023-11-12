@@ -38,9 +38,6 @@
     dockerSocket.enable = true;
   };
 
-  # Firmware
-  hardware.enableRedistributableFirmware = true;
-
   # Bluetooth
   hardware.bluetooth = {
     enable = true;
