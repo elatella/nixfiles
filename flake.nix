@@ -1,5 +1,5 @@
 {
-  description = "System configuration of CloudLena";
+  description = "System configuration of elatella";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -29,7 +29,7 @@
         ];
       };
 
-      homeConfigurations.lena = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.ela = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./home ];
       };
