@@ -20,7 +20,7 @@
         cursor_inactive_timeout = 8;
       };
       input = {
-        kb_options = "caps:escape,compose:ralt";
+        kb_layout = "ch";
         touchpad.natural_scroll = true;
       };
       gestures = {
@@ -36,7 +36,7 @@
         force_split = 2;
         no_gaps_when_only = 1;
       };
-      monitor = "eDP-1,preferred,auto,1.5";
+      monitor = "eDP-1,preferred,auto,1";
       exec-once = [
         "${pkgs.waybar}/bin/waybar"
         "${pkgs.swaybg}/bin/swaybg --image $wallpaper --mode fill"

@@ -13,14 +13,8 @@
     efi.canTouchEfiVariables = true;
   };
 
-  # Set up keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
-
   # Enable swap on luks
-  boot.initrd.luks.devices."luks-58a9f60d-bf2d-4c94-8f08-8e29a4083728".device = "/dev/disk/by-uuid/58a9f60d-bf2d-4c94-8f08-8e29a4083728";
-  boot.initrd.luks.devices."luks-58a9f60d-bf2d-4c94-8f08-8e29a4083728".keyFile = "/crypto_keyfile.bin";
+  boot.initrd.luks.devices."luks-82eea7f7-ce17-4503-b7e1-52db98518f58".device = "/dev/disk/by-uuid/82eea7f7-ce17-4503-b7e1-52db98518f58";
 
   # Networking
   networking.networkmanager.enable = true;
@@ -35,7 +29,11 @@
   security.pam.services.swaylock = { };
 
   # Containers
-  virtualisation.podman.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    dockerSocket.enable = true;
+  };
 
   # Bluetooth
   hardware.bluetooth = {
@@ -50,10 +48,13 @@
     pulse.enable = true;
   };
 
+  # Configure console keymap
+  console.keyMap = "sg";
+
   # Users
-  users.users.lena = {
+  users.users.ela = {
     isNormalUser = true;
-    description = "Lena";
+    description = "Ela";
     extraGroups = [ "wheel" "networkmanager" ];
     initialPassword = "changeme";
   };
@@ -84,9 +85,6 @@
 
     # Window manager
     hyprland.enable = true;
-
-    # Gaming
-    steam.enable = true;
   };
 
   services = {
