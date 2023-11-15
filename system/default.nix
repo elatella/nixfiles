@@ -87,9 +87,6 @@
   };
 
   services = {
-    # Firmware updater
-    fwupd.enable = true;
-
     # Geolocation service
     geoclue2.enable = true;
   };
