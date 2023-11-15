@@ -17,7 +17,10 @@
   boot.initrd.luks.devices."luks-82eea7f7-ce17-4503-b7e1-52db98518f58".device = "/dev/disk/by-uuid/82eea7f7-ce17-4503-b7e1-52db98518f58";
 
   # Networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    wifi.backend = "iwd";
+  };
 
   # Time zone
   time.timeZone = "Europe/Zurich";
@@ -34,6 +37,9 @@
     dockerCompat = true;
     dockerSocket.enable = true;
   };
+
+  # Firmware
+  hardware.enableRedistributableFirmware = true;
 
   # Bluetooth
   hardware.bluetooth = {
