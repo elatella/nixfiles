@@ -46,6 +46,7 @@
         "$mod, Tab, focusurgentorlast"
         "$mod, Q, killactive"
         "$mod, F, fullscreen"
+        "SUPER_SHIFT, F, fakefullscreen"
         "$mod, S, togglefloating"
 
         # Shortcuts
@@ -53,7 +54,7 @@
         "$mod, Return, exec, ${pkgs.alacritty}/bin/alacritty"
         "$mod, W, exec, ${pkgs.brave}/bin/brave"
         "$mod, C, exec, ${pkgs.cliphist}/bin/cliphist list | ${pkgs.fuzzel}/bin/fuzzel --dmenu --prompt '󰆏 ' | ${pkgs.cliphist}/bin/cliphist decode | ${pkgs.wl-clipboard}/bin/wl-copy"
-        "$mod, E, exec, ${pkgs.bemoji}/bin/bemoji"
+        "$mod, E, exec, ${pkgs.bemoji}/bin/bemoji -n"
         "$mod, P, exec, ${pkgs.hyprpicker}/bin/hyprpicker"
         "SUPER_CTRL, Q, exec, ${pkgs.swaylock}/bin/swaylock --daemonize"
 
@@ -136,8 +137,7 @@
           ];
           battery = {
             states = {
-              warning = 20;
-              critical = 1;
+              critical = 10;
             };
             format = "<span size=\"96%\">{icon}</span>";
             format-icons = {
@@ -351,12 +351,11 @@
       enable = true;
       timeouts = [
         { timeout = 600; command = "${pkgs.swaylock}/bin/swaylock --daemonize"; }
-        { timeout = 900; command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off"; }
+        { timeout = 900; command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off"; resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on"; }
         { timeout = 1200; command = "${pkgs.systemd}/bin/systemctl suspend"; }
       ];
       events = [
         { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock --daemonize"; }
-        { event = "after-resume"; command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on"; }
         { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock --daemonize"; }
       ];
     };
