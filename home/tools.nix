@@ -70,12 +70,6 @@
         updates.auto_update = true;
       };
     };
-
-    # AWS CLI
-    awscli.enable = true;
-
-    # Python dependency management
-    poetry.enable = true;
   };
 
   home.packages = with pkgs; [
