@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, dagger, ... }:
 
 {
   programs = {
@@ -76,6 +76,7 @@
     argocd
     brave
     curl
+	dagger.packages.${system}.dagger
     diff-so-fancy
     dig
     dive
