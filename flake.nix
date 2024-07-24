@@ -12,9 +12,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+	dagger = {
+      url = "github:dagger/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+	};
   };
 
-  outputs = { nixpkgs, nixos-hardware, lanzaboote, home-manager, ... }:
+  outputs = { nixpkgs, nixos-hardware, lanzaboote, home-manager, dagger, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -31,6 +35,7 @@
 
       homeConfigurations.ela = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+		extraSpecialArgs = { inherit dagger; };
         modules = [ ./home ];
       };
 
