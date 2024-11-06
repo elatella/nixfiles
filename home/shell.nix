@@ -5,7 +5,7 @@
     ".." = "cd ..";
     "..." = "cd ../..";
     a = "${pkgs.fabric-ai}/bin/fabric";
-    e = "${pkgs.helix}/bin/hx";
+    e = "nvim";
     f = "${pkgs.yazi}/bin/yazi";
     g = "${pkgs.gitui}/bin/gitui";
     m = "${pkgs.bottom}/bin/btm";
