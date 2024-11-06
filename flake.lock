@@ -21,6 +21,26 @@
         "type": "github"
       }
     },
+    "dagger": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1730382544,
+        "narHash": "sha256-ITUysrF3ZghjA5mLAPSubabDMBf0FctkGhfQ8FmXV+8=",
+        "owner": "dagger",
+        "repo": "nix",
+        "rev": "3b0c63231ef7210285d04f6ba8de59aa610cd052",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dagger",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -221,6 +241,7 @@
     },
     "root": {
       "inputs": {
+        "dagger": "dagger",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
         "nixos-hardware": "nixos-hardware",

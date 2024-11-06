@@ -4,7 +4,7 @@
   home.shellAliases = {
     ".." = "cd ..";
     "..." = "cd ../..";
-    e = "${pkgs.helix}/bin/hx";
+    e = "nvim";
     f = "${pkgs.yazi}/bin/yazi";
     g = "${pkgs.gitui}/bin/gitui";
     m = "${pkgs.bottom}/bin/btm";

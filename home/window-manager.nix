@@ -18,7 +18,7 @@
         "col.active_border" = "rgb(bb9af7)";
       };
       input = {
-        kb_options = "caps:escape,compose:ralt";
+        kb_layout = "ch";
         touchpad.natural_scroll = true;
       };
       cursor.inactive_timeout = 8;
@@ -35,7 +35,7 @@
         force_split = 2;
         no_gaps_when_only = 1;
       };
-      monitor = "eDP-1,preferred,auto,1.5";
+      monitor = "eDP-1,preferred,auto,1";
       exec-once = [
         "${pkgs.waybar}/bin/waybar"
       ];
@@ -457,6 +457,9 @@
       enable = true;
       provider = "geoclue2";
     };
+
+    # USB Automounter
+    udiskie.enable = true;
   };
 
   # Fonts
