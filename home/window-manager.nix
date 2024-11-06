@@ -21,7 +21,7 @@
         "col.active_border" = "rgb(bb9af7)";
       };
       input = {
-        kb_options = "caps:escape,compose:ralt";
+        kb_layout = "ch";
         touchpad.natural_scroll = true;
       };
       gestures = {
@@ -34,7 +34,7 @@
       };
       cursor.inactive_timeout = 8;
       monitor = [
-        "eDP-1,preferred,auto,1.5"
+        "eDP-1,preferred,auto,1"
         ",preferred,auto-center-up,1.5"
       ];
       # Smart gaps
@@ -256,6 +256,9 @@
       enable = true;
       provider = "geoclue2";
     };
+
+    # USB Automounter
+    udiskie.enable = true;
   };
 
   # Fonts
