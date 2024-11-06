@@ -18,9 +18,6 @@
     "xhci_pci"
     "thunderbolt"
     "nvme"
-    "usbhid"
-    "usb_storage"
-    "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
@@ -31,10 +28,10 @@
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/3287adf5-afa8-45c8-a958-fea13766dbeb";
+  boot.initrd.luks.devices."root".device = "/dev/disk/by-uuid/9e05913a-3847-4e6c-be0f-7d71e073a65e";
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/B81C-4766";
+    device = "/dev/disk/by-uuid/5672-684D";
     fsType = "vfat";
     options = [
       "fmask=0077"

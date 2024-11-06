@@ -8,7 +8,7 @@
   colors = {
     foreground = "c0caf5";
     background = "1a1b26";
-    primary = "bb9af7";
+    primary = "9ece6a";
     success = "9ece6a";
     warning = "e0af68";
     danger = "f7768e";

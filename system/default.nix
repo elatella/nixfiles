@@ -41,12 +41,19 @@
   security.apparmor.enable = true;
 
   # Containers
-  virtualisation.podman.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    dockerSocket.enable = true;
+  };
+
+  # Configure console keymap
+  console.keyMap = "sg";
 
   # Users
-  users.users.lena = {
+  users.users.ela = {
     isNormalUser = true;
-    description = "Lena";
+    description = "Ela";
     extraGroups = [
       "wheel"
       "networkmanager"
@@ -68,9 +75,6 @@
 
     # Window manager
     hyprland.enable = true;
-
-    # Gaming
-    steam.enable = true;
 
     # Nix store garbage collection
     nh = {
