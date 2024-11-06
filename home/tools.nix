@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, dagger, ... }:
 
 let
   theme = import ./theme.nix;
@@ -14,8 +14,8 @@ in
     # Git
     git = {
       enable = true;
-      userName = "Lena Fuhrimann";
-      userEmail = "6780471+cloudlena@users.noreply.github.com";
+      userName = "Raphaela Seeger";
+      userEmail = "elatella@users.noreply.github.com";
       signing = {
         key = null;
         signByDefault = true;
@@ -61,12 +61,6 @@ in
     # Quick navigation
     zoxide.enable = true;
 
-    # Password manager
-    browserpass = {
-      enable = true;
-      browsers = [ "brave" ];
-    };
-
     # JSON parser
     jq.enable = true;
 
@@ -110,27 +104,23 @@ in
         updates.auto_update = true;
       };
     };
-
-    # AWS CLI
-    awscli.enable = true;
   };
 
   home.packages = with pkgs; [
-    air
-    altair
+    argocd
     bluetui
     brave
-    cargo
-    clippy
+    curl
+    dagger.packages.${system}.dagger
     delta
     dig
+    dive
     dust
     fx
     gcc
     gimp3
     gnumake
     golangci-lint
-    gopass
     hugo
     inkscape
     jpegoptim
@@ -138,27 +128,33 @@ in
     kooha
     kubectl
     kubectx
+    kubernetes-helm
+    kubeseal
+    kustomize
+    krita
     libreoffice
     libwebp
     lolcat
-    moq
+    nautilus
     nodejs
     nodePackages.svgo
     onefetch
+    openshift
     opentofu
+    openvpn
     optipng
     podman-compose
     presenterm
     pwgen
-    python3
     quickemu
-    rustc
     shellcheck
     signal-desktop
     tflint
+    thunderbird
     timewarrior
     traceroute
     tree
+    rsync
     unzip
     upterm
     usbutils
@@ -168,19 +164,14 @@ in
     xdg-utils
     yq-go
     zip
+
+    minikube
+    docker-machine-kvm2
+
+    simple-scan
   ];
 
   xdg = {
-    configFile = {
-      "gopass/config".text = # ini
-        ''
-          [core]
-          	notifications = false
-          	showsafecontent = true
-          [mounts]
-          	path = ${config.home.homeDirectory}/.password-store
-        '';
-    };
     dataFile = {
       "task/hooks/on-modify.timewarrior" = {
         source = "${pkgs.timewarrior}/share/doc/timew/ext/on-modify.timewarrior";
