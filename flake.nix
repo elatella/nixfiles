@@ -1,5 +1,5 @@
 {
-  description = "System configuration of CloudLena";
+  description = "System configuration of elatella";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -12,6 +12,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dagger = {
+      url = "github:dagger/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -20,6 +24,7 @@
       nixos-hardware,
       lanzaboote,
       home-manager,
+      dagger,
       ...
     }:
     let
@@ -33,14 +38,17 @@
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         inherit system pkgs;
         modules = [
-          nixos-hardware.nixosModules.tuxedo-infinitybook-pro14-gen7
+          nixos-hardware.nixosModules.dell-xps-13-9310
           lanzaboote.nixosModules.lanzaboote
           ./system
         ];
       };
 
-      homeConfigurations.lena = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.ela = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+        extraSpecialArgs = {
+          inherit dagger;
+        };
         modules = [ ./home ];
       };
 

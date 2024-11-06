@@ -5,7 +5,7 @@
     ".." = "cd ..";
     "..." = "cd ../..";
     a = "${pkgs.claude-code}/bin/claude --dangerously-skip-permissions";
-    e = "${pkgs.helix}/bin/hx";
+    e = "${pkgs.vscodium}/bin/codium";
     f = "${pkgs.yazi}/bin/yazi";
     g = "${pkgs.gitui}/bin/gitui";
     m = "${pkgs.bottom}/bin/btm";

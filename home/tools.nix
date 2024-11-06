@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  dagger,
   theme,
   ...
 }:
@@ -22,8 +23,8 @@
       };
       settings = {
         user = {
-          name = "Lena Fuhrimann";
-          email = "6780471+cloudlena@users.noreply.github.com";
+          name = "Raphaela Seeger";
+          email = "elatella@users.noreply.github.com";
         };
       };
     };
@@ -89,12 +90,6 @@
     # Quick navigation
     zoxide.enable = true;
 
-    # Password manager
-    browserpass = {
-      enable = true;
-      browsers = [ "brave" ];
-    };
-
     # JSON parser
     jq.enable = true;
 
@@ -125,9 +120,6 @@
       };
     };
 
-    # AWS CLI
-    awscli.enable = true;
-
     # Go
     go.enable = true;
 
@@ -139,13 +131,12 @@
   };
 
   home.packages = with pkgs; [
-    air
-    altair
+    argocd
     bluetui
     brave
-    cargo
-    clippy
+    dagger.packages.${system}.dagger
     dig
+    dive
     dust
     file
     fx
@@ -153,7 +144,6 @@
     gimp3
     gnumake
     golangci-lint
-    gopass
     hugo
     image_optim
     inkscape
@@ -161,25 +151,32 @@
     kooha
     kubectl
     kubectx
+    kubernetes-helm
+    kubeseal
+    kustomize
+    krita
     libreoffice
     libwebp
     lolcat
-    moq
+    nautilus
     onefetch
+    openshift
     opentofu
+    openvpn
     podman-compose
     presenterm
     pwgen
     python3
     qrencode
     quickemu
-    rustc
     shellcheck
     signal-desktop
     tflint
+    thunderbird
     timewarrior
     traceroute
     tree
+    rsync
     unzip
     usbutils
     whois
@@ -188,20 +185,15 @@
     xdg-utils
     yq-go
     zip
+
+    minikube
+    docker-machine-kvm2
+
+    simple-scan
   ];
 
   xdg = {
     enable = true;
-    configFile = {
-      "gopass/config".text = # ini
-        ''
-          [core]
-          	notifications = false
-          	showsafecontent = true
-          [mounts]
-          	path = ${config.home.homeDirectory}/.password-store
-        '';
-    };
     dataFile = {
       "task/hooks/on-modify.timewarrior" = {
         source = "${pkgs.timewarrior}/share/doc/timew/ext/on-modify.timewarrior";

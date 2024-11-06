@@ -13,14 +13,17 @@
   };
 
   # Enable swap on luks
-  boot.initrd.luks.devices."luks-58a9f60d-bf2d-4c94-8f08-8e29a4083728".device =
-    "/dev/disk/by-uuid/58a9f60d-bf2d-4c94-8f08-8e29a4083728";
+  boot.initrd.luks.devices."luks-82eea7f7-ce17-4503-b7e1-52db98518f58".device =
+    "/dev/disk/by-uuid/82eea7f7-ce17-4503-b7e1-52db98518f58";
 
   # Restrict boot mount access
   fileSystems."/boot".options = lib.mkForce [ "umask=0077" ];
 
   # Networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    wifi.backend = "iwd";
+  };
 
   # Time zone
   time.timeZone = "Europe/Zurich";
@@ -29,7 +32,11 @@
   security.apparmor.enable = true;
 
   # Containers
-  virtualisation.podman.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+    dockerSocket.enable = true;
+  };
 
   # Bluetooth
   hardware.bluetooth = {
@@ -43,10 +50,13 @@
     pulse.enable = true;
   };
 
+  # Configure console keymap
+  console.keyMap = "sg";
+
   # Users
-  users.users.lena = {
+  users.users.ela = {
     isNormalUser = true;
-    description = "Lena";
+    description = "Ela";
     extraGroups = [
       "wheel"
       "networkmanager"
@@ -81,15 +91,9 @@
 
     # Window manager
     hyprland.enable = true;
-
-    # Gaming
-    steam.enable = true;
   };
 
   services = {
-    # Firmware updater
-    fwupd.enable = true;
-
     # Geolocation service
     geoclue2.enable = true;
 

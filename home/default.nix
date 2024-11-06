@@ -13,7 +13,7 @@
   # Pass theme to all imported modules
   _module.args.theme = import ./theme.nix;
 
-  home.username = "lena";
+  home.username = "ela";
   home.homeDirectory = "/home/${config.home.username}";
 
   home.stateVersion = "26.05";

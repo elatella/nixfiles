@@ -27,7 +27,7 @@
       };
       animations.enabled = false;
       input = {
-        kb_options = "caps:escape,compose:ralt";
+        kb_layout = "ch";
         special_fallthrough = true;
         touchpad.natural_scroll = true;
       };
@@ -42,7 +42,7 @@
         no_donation_nag = true;
       };
       monitor = [
-        "eDP-1,preferred,auto,1.5"
+        "eDP-1,preferred,auto,1"
         ",preferred,auto-center-up,auto"
       ];
       bind = [
@@ -256,6 +256,9 @@
       enable = true;
       provider = "geoclue2";
     };
+
+    # USB Automounter
+    udiskie.enable = true;
   };
 
   # Fonts
