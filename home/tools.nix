@@ -1,12 +1,12 @@
-{ config, pkgs, ... }:
+{ pkgs, dagger, ... }:
 
 {
   programs = {
     # Git
     git = {
       enable = true;
-      userName = "Lena Fuhrimann";
-      userEmail = "6780471+cloudlena@users.noreply.github.com";
+      userName = "Raphaela Seeger";
+      userEmail = "elatella@users.noreply.github.com";
       signing = {
         key = null;
         signByDefault = true;
@@ -49,12 +49,6 @@
     # Quick navigation
     zoxide.enable = true;
 
-    # Password manager
-    browserpass = {
-      enable = true;
-      browsers = [ "brave" ];
-    };
-
     # JSON parser
     jq.enable = true;
 
@@ -86,52 +80,54 @@
         updates.auto_update = true;
       };
     };
-
-    # AWS CLI
-    awscli.enable = true;
   };
 
   home.packages = with pkgs; [
-    air
-    altair
+    argocd
     brave
-    cargo
-    clippy
+    curl
+    dagger.packages.${system}.dagger
     delta
     dig
+    dive
     dust
     fx
     gcc
     gimp3
     gnumake
     golangci-lint
-    gopass
     hugo
     inkscape
     jpegoptim
     kooha
     kubectl
     kubectx
+    kubernetes-helm
+    kubeseal
+    kustomize
+    krita
     libreoffice
     libwebp
     lolcat
-    moq
+    nautilus
     nodejs
     nodePackages.svgo
+    openshift
     opentofu
+    openvpn
     optipng
     podman-compose
     presenterm
     pulsemixer
     pwgen
-    python3
     quickemu
-    rustc
     shellcheck
     signal-desktop-bin
     tflint
+    thunderbird
     timewarrior
     tree
+    rsync
     unzip
     upterm
     usbutils
@@ -146,15 +142,6 @@
   ];
 
   xdg = {
-    configFile = {
-      "gopass/config".text = ''
-        [core]
-        	notifications = false
-        	showsafecontent = true
-        [mounts]
-        	path = ${config.home.homeDirectory}/.password-store
-      '';
-    };
     dataFile = {
       "task/hooks/on-modify.timewarrior" = {
         source = "${pkgs.timewarrior}/share/doc/timew/ext/on-modify.timewarrior";

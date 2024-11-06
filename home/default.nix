@@ -10,7 +10,7 @@
     ./upgrade-diff.nix
   ];
 
-  home.username = "lena";
+  home.username = "ela";
   home.homeDirectory = "/home/${config.home.username}";
 
   home.stateVersion = "25.11";
